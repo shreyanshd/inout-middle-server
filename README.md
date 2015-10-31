@@ -25,3 +25,4 @@ directly view. As the videos will be cached already, high speed internet is not 
 
 # Architecture
 
+<img src="https://docs.google.com/drawings/d/1zNH6OrsDufI2liSOQ66YbcK_Z2cJrFbu3gEs5dQioWM/edit?usp=sharing">
