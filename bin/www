@@ -33,6 +33,8 @@ socket_o.s.on("available", function(data){
 
   var dowload_url = data.url;
   down.download(data.url,function(name){
+
+
     console.log("storing the new file "+name);
 
   });

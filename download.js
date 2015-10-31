@@ -36,7 +36,7 @@ var interval = setInterval(function () {
 request.addListener('response', function (response) {
 
 
-        var downloadfile = fs.createWriteStream("./public/videos"+filename, {'flags': 'a'});
+        var downloadfile = fs.createWriteStream("./public/videos/"+filename, {'flags': 'a'});
         console.log("File size " + filename + ": " + response.headers['content-length'] + " bytes.");
         response.addListener('data', function (chunk) {
             dlprogress += chunk.length;
