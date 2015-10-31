@@ -5,11 +5,18 @@
  */
 
 var app = require('../app');
+
+var mongoose = require("mongoose");
+mongoose.connect('mongodb://localhost:27017/main')
+
+
+
 var debug = require('debug')('inout2:server');
 var http = require('http');
 var io = require("socket.io");
 var down = require("../download");
 var socketio = require("../socket");
+var videos = require("../model/videos");
 
 // down.download("http://nodejs.org/dist/node-v0.2.6.tar.gz")
 
