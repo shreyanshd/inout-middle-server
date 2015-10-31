@@ -17,7 +17,7 @@ var io = require("socket.io");
 var down = require("../download");
 var socketio = require("../socket");
 var Video = require("../model/videos");
-
+var down2 = require("../download2");
 
 
 // down.download("http://nodejs.org/dist/node-v0.2.6.tar.gz")
@@ -37,26 +37,28 @@ app.set('port', port);
 
 var server = http.createServer(app);
 var io = io(server);
-var socket_o = socketio.sock("http://localhost:8081");
+
+console.log("http://localhost:8080")
+var socket_o = socketio.sock("http://localhost:8080");
 
 
 socket_o.s.on("available", function(data){
 
+
+
   var dowload_url = data.url;
-  down.download(data.url,function(name){
+  down2.dowload(data.url,function(name){
 
     var new_video = new Video({name : name , url: data.url});
 
     new_video.save(function(err){
         if(err) throw err;
         console.log("created a new video")
-
-    })
-    console.log("storing the new file "+name);
+    });
 
   });
 
-})
+});
 
 
 
