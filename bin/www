@@ -7,6 +7,7 @@
 var app = require('../app');
 
 var mongoose = require("mongoose");
+var  url = require("url");
 mongoose.connect('mongodb://localhost:27017/main')
 
 
@@ -46,8 +47,12 @@ socket_o.s.on("available", function(data){
 
 
 
-  var dowload_url = data.url;
-  down2.dowload(data.url,function(name){
+  var download_url = data.url;
+
+  var filename = url.parse(download_url).pathname.split("/").pop();
+  var extention = filename.split(".").pop()
+  console.log(filename)
+  down2(data.url,"./public/"+data.name+"."+extention,function(name){
 
     var new_video = new Video({name : name , url: data.url});
 

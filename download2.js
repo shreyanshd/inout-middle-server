@@ -1,12 +1,7 @@
 var http = require('http');
 var fs = require('fs');
-
-var url = require("url");
-var app = {};
-function download(uri,cb) {
-
-  var filename = url.parse(uri).pathname.split("/").pop();
-  var file = fs.createWriteStream("./public/"+filename);
+function download(url, dest, cb) {
+  var file = fs.createWriteStream(dest);
   var request = http.get(url, function(response) {
     response.pipe(file);
     file.on('finish', function() {
@@ -17,5 +12,4 @@ function download(uri,cb) {
     if (cb) cb(err.message);
   });
 };
-app.download = download;
-module.exports = app ;
+module.exports = download ;
