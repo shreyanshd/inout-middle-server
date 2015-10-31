@@ -16,13 +16,17 @@ var http = require('http');
 var io = require("socket.io");
 var down = require("../download");
 var socketio = require("../socket");
-var videos = require("../model/videos");
+var Video = require("../model/videos");
+
+
 
 // down.download("http://nodejs.org/dist/node-v0.2.6.tar.gz")
 
 /**
  * Get port from environment and store in Express.
  */
+
+
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
@@ -41,7 +45,13 @@ socket_o.s.on("available", function(data){
   var dowload_url = data.url;
   down.download(data.url,function(name){
 
+    var new_video = new Video({name : name , url: data.url});
 
+    new_video.save(function(err){
+        if(err) throw err;
+        console.log("created a new video")
+
+    })
     console.log("storing the new file "+name);
 
   });

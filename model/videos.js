@@ -8,7 +8,8 @@ var videoSchema = new Schema({
   description: String,
   likes: { type :Number , default:0 },
   createdOn : { type: Date , default: Date.now },
-  category: String
+  category: String,
+  url: String
 
 });
 
