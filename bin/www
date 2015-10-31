@@ -7,6 +7,11 @@
 var app = require('../app');
 var debug = require('debug')('inout2:server');
 var http = require('http');
+var io = require("socket.io");
+var down = require("../download");
+var socketio = require("../socket");
+
+// down.download("http://nodejs.org/dist/node-v0.2.6.tar.gz")
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +25,23 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+var io = io(server);
+var socket_o = socketio.sock("http://localhost:8081");
+
+
+socket_o.s.on("available", function(data){
+
+  var dowload_url = data.url;
+  down.download(data.url,function(name){
+    console.log("storing the new file "+name);
+
+  });
+
+})
+
+
+
+
 
 /**
  * Listen on provided port, on all network interfaces.

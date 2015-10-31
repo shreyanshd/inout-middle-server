@@ -1,20 +1,38 @@
 <html>
 <head>
 <title>Handlebars examples with Express 4</title>
+
+<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+<link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
 
-<h3>Examples:</h3>
-<ul>
-<li><a href='/simple'>Simple variable display</a></li>
-<li><a href='/complex'>Complex object display</a></li>
-<li><a href='/loop'>Using loops with '&#123;&#123;#each&#125;&#125;'</a></li>
-<li><a href='/logic'>Logic in your templates with '&#123;&#123;#if&#125;&#125;'</a></li>
-</ul>
-
-some value {{someValue}}
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">middle server</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
 
 {{{body}}}
 
 </body>
+
+<script src="javascripts/socket.io.js" charset="utf-8"></script>
+
+<script src="main.js"></script>
 </html>
